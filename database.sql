@@ -1,6 +1,6 @@
 CREATE DATABASE expense_track_db;
 
---\c into database
+\c expense_track_db
 
 CREATE TABLE expenses(
   expense_id SERIAL PRIMARY KEY,
