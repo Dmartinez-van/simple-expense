@@ -42,3 +42,20 @@ Please ensure there are no conflicts on existing ports.
 
 - Server runs on localhost:5000
 - Client runs on localhost:3000
+
+# Dependencies
+
+Server:
+
+> "express": "^4.17.1",  
+>  "pg": "^8.6.0"
+
+Client:
+
+> "@testing-library/jest-dom": "^5.11.4",  
+>  "@testing-library/react": "^11.1.0",  
+> "@testing-library/user-event": "^12.1.10",  
+> "react": "^17.0.2",  
+> "react-dom": "^17.0.2",  
+> "react-scripts": "4.0.3",  
+> "web-vitals": "^1.0.1"
