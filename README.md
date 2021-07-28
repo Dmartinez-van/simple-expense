@@ -4,6 +4,12 @@ Simple expense tracker. Takes inputs of name, category, and a numeric amount (as
 
 Data is persistent through a psql database (setup instructions below)
 
+# Stack
+
+Front-end: React 17.0.2  
+Back-end: NodeJS + Express  
+DB: psql
+
 # Getting Started
 
 1. Clone the repo with `git clone` to your desired directory
@@ -19,11 +25,13 @@ Since this is a locally run project, we will need to setup a local database to d
 To do this please enter psql in a new terminal using the `psql` command.  
 Then run the database script using
 
+(Please ensure no other database with the name `expense_track_db` exists on your machine locally. If it does, edit the `database.sql` and change a new database name).
+
 > `\i database.sql`
 
 The `database.sql` file includes what psql commands will be run to:
 
-1. Create the DB
+1. **Drop existing DB (If one of the same name exists)** and creates the DB
 2. Connect to the DB
 3. Create Table within DB
 4. Seed table with seed data
