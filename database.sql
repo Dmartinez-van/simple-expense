@@ -16,4 +16,4 @@ INSERT INTO expenses (name, category, amount) VALUES
 ('Snack', 'Food',5),
 ('Desert', 'Food',10),
 ('New Car', 'Transportation', 20000),
-('Uber Ride', 'Transportation', 17.23);
+('Uber Ride', 'Transportation', 17);
