@@ -5,13 +5,13 @@ const InputExpense = () => {
   // Must be a way to combine into one state object... Tried but couldn't get to work.
   const [name, setName] = useState("");
   const [category, setCategory] = useState("");
-  const [amount, setAmount] = useState();
-  const [errorMsg, setErrorMsg] = useState("");
+  const [cost, setCost] = useState(0);
+  // const [errorMsg, setErrorMsg] = useState("");
 
   const onSubmitForm = async (e) => {
     e.preventDefault();
     try {
-      const body = { name, category, amount };
+      const body = { name, category, cost };
       await fetch("/expenses", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -68,10 +68,10 @@ const InputExpense = () => {
             data-type="currency"
             placeholder="$1,000"
             className="form-control"
-            value={amount}
+            // value={cost}
             required
             min="0"
-            onChange={(e) => setAmount(e.target.value)}
+            onChange={(e) => setCost(e.target.value)}
           />
         </label>
         <button className="btn btn-success mt-4 h-25">Add</button>

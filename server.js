@@ -35,10 +35,10 @@ app.get("/expenses/:id", async (req, res) => {
 app.post("/expenses", async (req, res) => {
   try {
     //await
-    const { name, category, amount } = req.body;
+    const { name, category, cost } = req.body;
     const newExpense = await pool.query(
-      "INSERT INTO expenses (name, category, amount) VALUES ($1, $2, $3) RETURNING *",
-      [name, category, amount]
+      "INSERT INTO expenses (name, category, cost) VALUES ($1, $2, $3) RETURNING *",
+      [name, category, cost]
     );
     res.json(newExpense);
   } catch (err) {

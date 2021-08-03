@@ -24,9 +24,9 @@ const ListExpenses = () => {
   const getExpenses = async () => {
     try {
       const response = await fetch("/expenses");
-      console.log("response: ", response);
+      // console.log("response: ", response);
       const jsonData = await response.json();
-      console.log("jsonData: ", jsonData);
+      // console.log("jsonData: ", jsonData);
 
       setExpenses(jsonData);
     } catch (error) {
@@ -57,7 +57,7 @@ const ListExpenses = () => {
               <td>{expense.expense_id}</td>
               <td>{expense.name}</td>
               <td>{expense.category}</td>
-              <td>{expense.amount}</td>
+              <td>{expense.cost}</td>
               <td>
                 <button
                   className="btn btn-danger"
