@@ -11,7 +11,7 @@ const ListExpenses = () => {
       });
 
       setExpenses(
-        expenses.filter((expense) => expense.expense_id !== id)
+        expenses.filter((expense) => expense.expense_id !== id) // we want all expenses EXCEPT the one we clicked delete on
         // .sort((a, b) => {
         //   return a - b;
         // })
@@ -24,7 +24,9 @@ const ListExpenses = () => {
   const getExpenses = async () => {
     try {
       const response = await fetch("/expenses");
+      console.log("response: ", response);
       const jsonData = await response.json();
+      console.log("jsonData: ", jsonData);
 
       setExpenses(jsonData);
     } catch (error) {

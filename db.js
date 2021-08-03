@@ -1,3 +1,4 @@
+// const { Pool } = require("pg") --- alternative notation using object destructuring
 const Pool = require("pg").Pool; // .Pool allows us to configure the database settings
 
 const pool = new Pool({
