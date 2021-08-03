@@ -17,7 +17,7 @@ app.get("/expenses", async (req, res) => {
   }
 });
 
-// get specific expense
+// get specific expense - UNUSED
 app.get("/expenses/:id", async (req, res) => {
   try {
     const { id } = req.params;
@@ -34,7 +34,6 @@ app.get("/expenses/:id", async (req, res) => {
 // create a expense
 app.post("/expenses", async (req, res) => {
   try {
-    //await
     const { name, category, cost } = req.body;
     const newExpense = await pool.query(
       "INSERT INTO expenses (name, category, cost) VALUES ($1, $2, $3) RETURNING *",

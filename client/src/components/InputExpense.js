@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { useState } from "react";
 import "./styles.css";
 
 const InputExpense = () => {
@@ -12,11 +12,14 @@ const InputExpense = () => {
     e.preventDefault();
     try {
       const body = { name, category, cost };
+      // Post to server with the body information.
       await fetch("/expenses", {
         method: "POST",
+        // headers key must be included and match the body key/value
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
       });
+      // Refresh user's cursor to the window (aka not in the input fields)
       window.location = "/";
     } catch (err) {
       console.error(err.message);
@@ -24,7 +27,7 @@ const InputExpense = () => {
   };
 
   return (
-    <Fragment>
+    <>
       <h1 className="text-center mt-5">Add Expense</h1>
 
       <form
@@ -76,7 +79,7 @@ const InputExpense = () => {
         </label>
         <button className="btn btn-success mt-4 h-25">Add</button>
       </form>
-    </Fragment>
+    </>
   );
 };
 
