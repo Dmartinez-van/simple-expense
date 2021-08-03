@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const ListExpenses = () => {
   const [expenses, setExpenses] = useState([]);
@@ -11,10 +11,8 @@ const ListExpenses = () => {
       });
 
       setExpenses(
-        expenses.filter((expense) => expense.expense_id !== id) // we want all expenses EXCEPT the one we clicked delete on
-        // .sort((a, b) => {
-        //   return a - b;
-        // })
+        // we want all expenses EXCEPT the one we clicked delete on
+        expenses.filter((expense) => expense.expense_id !== id)
       );
     } catch (error) {
       console.error(error.message);
@@ -23,23 +21,24 @@ const ListExpenses = () => {
 
   const getExpenses = async () => {
     try {
+      // await fetch("/expenses").then((body) =>
+      //   body.json().then((data) => setExpenses(data))
+      // );
       const response = await fetch("/expenses");
-      // console.log("response: ", response);
       const jsonData = await response.json();
-      // console.log("jsonData: ", jsonData);
-
       setExpenses(jsonData);
     } catch (error) {
       console.error(error.message);
     }
   };
 
+  // Run getExpenses() on initial page load (on mount)
   useEffect(() => {
     getExpenses();
   }, []);
 
   return (
-    <Fragment>
+    <>
       <h1 className="mt-5 text-center">Expense List</h1>
       <table className="table mt-3 text-center">
         <thead>
@@ -57,7 +56,12 @@ const ListExpenses = () => {
               <td>{expense.expense_id}</td>
               <td>{expense.name}</td>
               <td>{expense.category}</td>
-              <td>{expense.cost}</td>
+              <td>
+                {new Intl.NumberFormat("en-US", {
+                  style: "currency",
+                  currency: "USD",
+                }).format(expense.cost)}
+              </td>
               <td>
                 <button
                   className="btn btn-danger"
@@ -70,7 +74,7 @@ const ListExpenses = () => {
           ))}
         </tbody>
       </table>
-    </Fragment>
+    </>
   );
 };
 

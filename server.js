@@ -35,6 +35,7 @@ app.get("/expenses/:id", async (req, res) => {
 app.post("/expenses", async (req, res) => {
   try {
     const { name, category, cost } = req.body;
+    console.log(req.body);
     const newExpense = await pool.query(
       "INSERT INTO expenses (name, category, cost) VALUES ($1, $2, $3) RETURNING *",
       [name, category, cost]
@@ -50,10 +51,7 @@ app.delete("/expenses/:id", async (req, res) => {
   try {
     const { id } = req.params;
 
-    const deleteExpense = await pool.query(
-      "DELETE FROM expenses WHERE expense_id = $1",
-      [id]
-    );
+    await pool.query("DELETE FROM expenses WHERE expense_id = $1", [id]);
 
     res.json("Expense was successfully deleted!");
   } catch (err) {

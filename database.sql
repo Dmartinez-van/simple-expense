@@ -9,7 +9,7 @@ CREATE TABLE expenses(
   expense_id SERIAL PRIMARY KEY,
   name VARCHAR(255),
   category VARCHAR(255),
-  cost INT
+  cost FLOAT
 );
 
 INSERT INTO expenses (name, category, cost) VALUES 

@@ -72,6 +72,7 @@ const InputExpense = () => {
             placeholder="$1,000"
             className="form-control"
             // value={cost}
+            step="0.01"
             required
             min="0"
             onChange={(e) => setCost(e.target.value)}
